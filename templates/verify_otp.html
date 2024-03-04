@@ -1,0 +1,26 @@
+<!-- templates/verify_otp.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Verify OTP</h1>
+        {% if error_message %}
+            <p class="error-message">{{ error_message }}</p>
+        {% endif %}
+        <form action="{{ url_for('verify_otp', phone_number=phone_number) }}" method="post" class="otp-form">
+            <label for="otp">Enter OTP:</label>
+            <input type="text" id="otp" name="otp" required>
+            <button type="submit">Verify OTP</button>
+        </form>
+        {% if error_message %}
+            <p class="try-again-message">Please try again.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
